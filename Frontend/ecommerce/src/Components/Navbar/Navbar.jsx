@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './Navbar.css';
 import logo from '../../assets/Beauty Here.png';
-import cartIcon from '../assets/cart_icon.png';
+import cartIcon from '../../assets/cart_icon.png';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext';
 import { CartContext } from '../../Context/cartContext';
