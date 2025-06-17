@@ -1,7 +1,7 @@
 import './AboutUs.css'; 
 import { FaLeaf, FaHeart, FaStar, FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
 import aboutBanner from '../assets/about-banner.png'; 
-import founderImg from '../assets/user2.jpg'; 
+import founderImg from '../assets/fiza-mughal.jpeg'; 
 
 const AboutUs = () => {
   return (
@@ -28,7 +28,7 @@ const AboutUs = () => {
               </div>
               <div className="founder-text">
                   <h3>A Word From Our Founder</h3>
-                  <h2>Fatima Ali</h2>
+                  <h2>Fiza Muneer</h2>
                   <p>
                       "BeautyHere started from a simple dream: to create a beauty brand that is both luxurious and kind. As a lifelong beauty enthusiast, I wanted to build a community where everyone feels included and celebrated. Every product we create is a piece of my heart, crafted with love, care, and a commitment to quality. Thank you for being a part of our beautiful journey."
                   </p>
