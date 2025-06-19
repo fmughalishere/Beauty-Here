@@ -83,6 +83,24 @@
   margin-bottom: 1.8rem;
 }
 
+.password-group {
+  position: relative; 
+}
+
+.password-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-light, #5a5a5a);
+  z-index: 3; 
+}
+
+.password-group input {
+  padding-right: 40px; 
+}
+
 .input-group input {
   width: 100%;
   padding: 12px 0;

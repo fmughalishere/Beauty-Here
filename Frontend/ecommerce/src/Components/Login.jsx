@@ -5,6 +5,7 @@ import { UserContext } from '../Context/UserContext';
 import { CartContext } from '../Context/cartContext';
 import { useNavigate } from 'react-router-dom';
 import loginBg from '../assets/login-banner.png';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,6 +18,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [agreed, setAgreed] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,27 +34,22 @@ const Login = () => {
         setError("Please enter both email and password.");
         return;
       }
-
       try {
         const res = await axios.post('http://localhost:5000/api/user/login', { email, password });
-
-        login(res.data, res.data.token); 
+        login(res.data, res.data.token);
         setUserEmail(res.data.email);
         navigate('/profile');
       } catch (err) {
         setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
       }
-
     } else {
       if (!name || !email || !password) {
         setError("Please fill in all fields.");
         return;
       }
-
       try {
         const res = await axios.post('http://localhost:5000/api/user/register', { name, email, password });
-
-        login(res.data, res.data.token); 
+        login(res.data, res.data.token);
         setUserEmail(res.data.email);
         navigate('/');
       } catch (err) {
@@ -89,10 +86,19 @@ const Login = () => {
               <input id="email" type="email" placeholder=" " value={email} onChange={e => setEmail(e.target.value)} required />
               <label htmlFor="email">Your Email</label>
             </div>
-
-            <div className="input-group">
-              <input id="password" type="password" placeholder=" " value={password} onChange={e => setPassword(e.target.value)} required />
+            <div className="input-group password-group">
+              <input 
+                id="password" 
+                type={showPassword ? "text" : "password"} 
+                placeholder=" " 
+                value={password} 
+                onChange={e => setPassword(e.target.value)} 
+                required 
+              />
               <label htmlFor="password">Your Password</label>
+              <div className="password-icon" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
             </div>
 
             {error && <p className="auth-error">{error}</p>}
