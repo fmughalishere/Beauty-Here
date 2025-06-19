@@ -31,13 +31,10 @@ const generateSkincareRoutine = async (req, res) => {
 
     try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); 
-        
         const result = await model.generateContent(prompt);
         const response = await result.response;
-        const text = response.text();
-        
+        const text = response.text();        
         res.json({ success: true, routine: text });
-
     } catch (error) {
         console.error("Google Gemini API Error:", error);
         res.status(500).json({ success: false, message: "Failed to generate routine. Please try again." });
