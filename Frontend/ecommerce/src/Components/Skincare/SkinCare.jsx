@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../Context/cartContext'; 
+import { CartContext } from '../../Context/cartContext'; 
 import './SkinCare.css'; 
-import bannerImg from '../assets/skincare-banner.webp'; 
-import drySkinImg from '../assets/dryskin.jpg';
-import oilySkinImg from '../assets/oilyskin.jpg';
-import sensitiveSkinImg from '../assets/sensitiveskin.jpg';
-import product1 from '../assets/n1.png';
-import product2 from '../assets/serum.jpg';
-import product3 from '../assets/n8.png';
-import product4 from '../assets/skin.jpg';
+import bannerImg from '../../assets/skincare-banner.webp'; 
+import drySkinImg from '../../assets/dryskin.jpg';
+import oilySkinImg from '../../assets/oilyskin.jpg';
+import sensitiveSkinImg from '../../assets/sensitiveskin.jpg';
+import product1 from '../../assets/n1.png';
+import product2 from '../../assets/serum.jpg';
+import product3 from '../../assets/n8.png';
+import product4 from '../../assets/skin.jpg';
 
 const featuredProducts = [
   { id: 101, name: 'Gentle Cleansing Facewash', price: 18, imageSrc: product1 },

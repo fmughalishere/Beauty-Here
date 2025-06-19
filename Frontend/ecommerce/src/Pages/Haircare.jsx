@@ -1,4 +1,4 @@
-import Haircare from "../Components/HairCare"
+import Haircare from "../Components/Haircare/HairCare"
 const HairCare = () => {
   return (
     <div>

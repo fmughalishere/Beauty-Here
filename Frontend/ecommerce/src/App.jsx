@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
-import Checkout from './Components/Checkout';
-import PaymentSuccess from './Components/PaymentSuccess';
-import SkincareQuiz from './Components/SkincareQuiz';
+import Checkout from './Components/Checkout/Checkout';
+import PaymentSuccess from './Components/Payment Success/PaymentSuccess';
+import SkincareQuiz from './Components/Skin Quiz/SkincareQuiz';
 import Admin from './Components/Admin/Admin';
 import AdminRoute from './Components/AdminRoute'; 
 import Home from './Pages/Home';

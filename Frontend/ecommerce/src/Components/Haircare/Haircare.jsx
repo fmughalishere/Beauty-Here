@@ -1,41 +1,44 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { CartContext } from '../Context/cartContext'; 
-import './Makeup.css';
-import makeup1 from '../assets/lipsticks.webp';
-import makeup2 from '../assets/foundation.avif';
-import makeup3 from '../assets/eyeshadow.jpg';
-import makeup4 from '../assets/lip-sticks.webp';
-import makeup5 from '../assets/mascara.jpg';
-import makeup6 from '../assets/blush.jpg';
-import makeup7 from '../assets/liquid.webp';
-import makeup8 from '../assets/eyeshades.jpg';
+import { CartContext } from '../../Context/cartContext'; 
+import './Haircare.css';
+import haircare1 from '../../assets/shampoo.jpg';
+import haircare2 from '../../assets/conditioner.jpg';
+import haircare3 from '../../assets/serum.jpg';
+import haircare4 from '../../assets/oil.jpg';
+import haircare5 from '../../assets/mask.jpg';
+import haircare6 from '../../assets/hair shampoo.jpg';
+import haircare7 from '../../assets/haircond.jpg';
+import haircare8 from '../../assets/hairoil.jpg';
 
-const allMakeupProducts = [
-  { id: 20, name: 'Velvet Matte Lipstick', category: 'Lipstick', price: 18, imageSrc: makeup1 },
-  { id: 21, name: 'Flawless Finish Foundation', category: 'Foundation', price: 35, imageSrc: makeup2 },
-  { id: 22, name: 'Galaxy Eyeshadow Palette', category: 'Eyeshadow', price: 45, imageSrc: makeup3 },
-  { id: 23, name: 'Hydrating Shine Lipstick', category: 'Lipstick', price: 22, imageSrc: makeup4 },
-  { id: 24, name: 'Volumizing Lash Mascara', category: 'Mascara', price: 15, imageSrc: makeup5 },
-  { id: 25, name: 'Rose Petal Blush', category: 'Blush', price: 28, imageSrc: makeup6 },
-  { id: 26, name: '24-Hour Wear Foundation', category: 'Foundation', price: 40, imageSrc: makeup7 },
-  { id: 27, name: 'Desert Sunset Palette', category: 'Eyeshadow', price: 50, imageSrc: makeup8 },
+const allHaircareProducts = [
+  { id: 30, name: 'Argan Oil Repair Shampoo', category: 'Shampoo', price: 25, imageSrc: haircare1 },
+  { id: 31, name: 'Keratin Smooth Conditioner', category: 'Conditioner', price: 28, imageSrc: haircare2 },
+  { id: 32, name: 'Anti-Frizz Hair Serum', category: 'Serum', price: 30, imageSrc: haircare3 },
+  { id: 33, name: 'Herbal Strengthening Oil', category: 'Oil', price: 22, imageSrc: haircare4 },
+  { id: 34, name: 'Deep Hydration Hair Mask', category: 'Mask', price: 35, imageSrc: haircare5 },
+  { id: 35, name: 'Sulfate-Free Volume Shampoo', category: 'Shampoo', price: 27, imageSrc: haircare6 },
+  { id: 36, name: 'Coconut Milk Conditioner', category: 'Conditioner', price: 26, imageSrc: haircare7 },
+  { id: 37, name: 'Almond & Amla Hair Oil', category: 'Oil', price: 20, imageSrc: haircare8 },
 ];
 
-const Makeup = () => {
+const Haircare = () => {
   const { addToCart } = useContext(CartContext);
-  const [products, setProducts] = useState(allMakeupProducts);
+  const [products, setProducts] = useState(allHaircareProducts);
   const [activeFilter, setActiveFilter] = useState('All');
   const [sortType, setSortType] = useState('default');
   useEffect(() => {
-    let filteredProducts = [...allMakeupProducts];
+    let filteredProducts = [...allHaircareProducts];
+
     if (activeFilter !== 'All') {
       filteredProducts = filteredProducts.filter(p => p.category === activeFilter);
     }
+
     if (sortType === 'price-asc') {
       filteredProducts.sort((a, b) => a.price - b.price);
     } else if (sortType === 'price-desc') {
       filteredProducts.sort((a, b) => b.price - a.price);
     }
+
     setProducts(filteredProducts);
   }, [activeFilter, sortType]);
 
@@ -45,20 +48,20 @@ const Makeup = () => {
     alert(`${product.name} has been added to the cart!`);
   };
 
-  const makeupCategories = ['All', 'Lipstick', 'Foundation', 'Eyeshadow', 'Mascara', 'Blush'];
+  const haircareCategories = ['All', 'Shampoo', 'Conditioner', 'Serum', 'Oil', 'Mask'];
 
   return (
-    <div className="makeup-page">
-      <header className="makeup-header">
+    <div className="haircare-page">
+      <header className="haircare-header">
         <div className="header-overlay">
-          <h1>Unleash Your Inner Artist</h1>
-          <p>Discover our vibrant collection of makeup to express your unique style.</p>
+          <h1>Love is in the Hair</h1>
+          <p>Discover professional haircare products for salon-quality results at home.</p>
         </div>
       </header>
       <section className="controls-section">
         <div className="filter-controls">
           <div className="filter-buttons">
-            {makeupCategories.map(category => (
+            {haircareCategories.map(category => (
               <button
                 key={category}
                 className={activeFilter === category ? 'active' : ''}
@@ -77,11 +80,11 @@ const Makeup = () => {
           </div>
         </div>
       </section>
-      <main className="makeup-grid-container">
+      <main className="haircare-grid-container">
         {products.length > 0 ? (
-          <div className="makeup-grid">
+          <div className="haircare-grid">
             {products.map((product) => (
-              <div key={product.id} className="makeup-product-card">
+              <div key={product.id} className="haircare-product-card">
                 <div className="card-img-container">
                   <img src={product.imageSrc} alt={product.name} />
                 </div>
@@ -106,4 +109,4 @@ const Makeup = () => {
   );
 };
 
-export default Makeup;
+export default Haircare;

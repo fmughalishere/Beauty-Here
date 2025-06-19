@@ -1,4 +1,4 @@
-import Services from "../Components/Services"
+import Services from "../Components/Services/Services"
 const AllServices = () => {
   return (
     <div>

@@ -9,11 +9,11 @@
   --font-heading: 'Space Grotesk', sans-serif;
 }
 
-.fragrance-page {
+.makeup-page {
   width: 100%;
 }
 
-.fragrance-header {
+.makeup-header {
   height: 40vh;
   min-height: 300px;
   width: 100%;
@@ -22,25 +22,25 @@
   align-items: center;
   text-align: center;
   color: var(--white);
-  background: url('../assets/fragrance-banner.webp') no-repeat center center/cover;
+  background: url('../../assets/x5.jpg') no-repeat center center/cover;
   position: relative;
 }
 
-.fragrance-header .header-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+.header-overlay {
+  background-color: rgba(0, 0, 0, 0.5); 
   padding: 2rem;
   border-radius: 10px;
   position: relative;
   z-index: 2;
 }
 
-.fragrance-header h1 {
+.makeup-header h1 {
   font-family: var(--font-heading);
   font-size: 3.5rem;
   margin-bottom: 0.5rem;
 }
 
-.fragrance-header p {
+.makeup-header p {
   font-size: 1.2rem;
   max-width: 600px;
 }
@@ -100,19 +100,19 @@
   font-size: 1rem;
 }
 
-.fragrance-grid-container {
+.makeup-grid-container {
   max-width: 1200px;
   width: 90%;
   margin: 3rem auto;
 }
 
-.fragrance-grid {
+.makeup-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
 }
 
-.fragrance-product-card {
+.makeup-product-card {
   background-color: var(--white);
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -122,31 +122,31 @@
   transition: all 0.3s ease;
 }
 
-.fragrance-product-card:hover {
+.makeup-product-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.fragrance-product-card .card-img-container {
+.card-img-container {
   height: 280px;
   background-color: #fafafa;
   padding: 1rem;
 }
 
-.fragrance-product-card .card-img-container img {
+.card-img-container img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.fragrance-product-card .card-text-content {
+.card-text-content {
   padding: 1.2rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.fragrance-product-card .p-category {
+.p-category {
   color: var(--text-light);
   font-size: 0.8rem;
   font-weight: 500;
@@ -154,7 +154,7 @@
   margin-bottom: 0.5rem;
 }
 
-.fragrance-product-card .p-name {
+.p-name {
   font-family: var(--font-heading);
   font-size: 1.1rem;
   font-weight: 700;
@@ -162,14 +162,14 @@
   margin-bottom: 0.8rem;
 }
 
-.fragrance-product-card .p-price {
+.p-price {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary-color);
   margin-top: auto; 
 }
 
-.fragrance-product-card .add-to-cart-btn {
+.add-to-cart-btn {
   width: 100%;
   background-color: var(--text-dark);
   color: var(--white);
@@ -182,7 +182,7 @@
   transition: background-color 0.3s ease;
 }
 
-.fragrance-product-card .add-to-cart-btn:hover {
+.add-to-cart-btn:hover {
   background-color: var(--primary-color);
 }
 
@@ -192,9 +192,8 @@
   font-size: 1.2rem;
   color: var(--text-light);
 }
-
 @media screen and (max-width: 768px) {
-  .fragrance-header h1 {
+  .makeup-header h1 {
     font-size: 2.5rem;
   }
   .filter-controls {
@@ -204,10 +203,10 @@
 }
 
 @media screen and (max-width: 480px) {
-  .fragrance-header h1 {
+  .makeup-header h1 {
     font-size: 2rem;
   }
-  .fragrance-header p {
+  .makeup-header p {
     font-size: 1rem;
   }
 }

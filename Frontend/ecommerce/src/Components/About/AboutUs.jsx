@@ -1,7 +1,7 @@
 import './AboutUs.css'; 
 import { FaLeaf, FaHeart, FaStar, FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
-import aboutBanner from '../assets/about-banner.png'; 
-import founderImg from '../assets/fiza-mughal.jpeg'; 
+import aboutBanner from '../../assets/about-banner.png'; 
+import founderImg from '../../assets/fiza-mughal.jpeg'; 
 
 const AboutUs = () => {
   return (

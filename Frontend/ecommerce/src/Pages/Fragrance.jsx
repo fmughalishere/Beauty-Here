@@ -1,4 +1,4 @@
-import FragranceComp from '../Components/FragranceComp'
+import FragranceComp from '../Components/Fragrances/FragranceComp'
 const Fragrance = () => {
   return (
     <div>

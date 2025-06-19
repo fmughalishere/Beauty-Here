@@ -1,9 +1,9 @@
 import './Services.css';
 import { FaUserTie, FaSpa, FaRegHeart } from 'react-icons/fa';
-import facialImg from '../assets/f1.jpg';
-import makeupImg from '../assets/f2.jpg';
-import hairImg from '../assets/f3.jpeg';
-import nailsImg from '../assets/f4.webp';
+import facialImg from '../../assets/f1.jpg';
+import makeupImg from '../../assets/f2.jpg';
+import hairImg from '../../assets/f3.jpeg';
+import nailsImg from '../../assets/f4.webp';
 
 const servicesData = [
   {

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CartContext } from '../Context/cartContext';
+import { CartContext } from '../../Context/cartContext';
 import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaLock } from 'react-icons/fa';
 import axios from 'axios';

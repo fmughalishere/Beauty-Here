@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import './Login.css';
 import axios from 'axios';
-import { UserContext } from '../Context/UserContext';
-import { CartContext } from '../Context/cartContext';
+import { UserContext } from '../../Context/UserContext';
+import { CartContext } from '../../Context/cartContext';
 import { useNavigate } from 'react-router-dom';
-import loginBg from '../assets/login-banner.png';
+import loginBg from '../../assets/login-banner.png';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {

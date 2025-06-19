@@ -22,7 +22,7 @@
   align-items: center;
   text-align: center;
   color: var(--white);
-  background: url('../assets/haircare-banner.webp') no-repeat center center/cover;
+  background: url('../../assets/haircare-banner.webp') no-repeat center center/cover;
   position: relative;
 }
 

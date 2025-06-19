@@ -1,4 +1,4 @@
-import MakeUp from '../Components/Makeup'
+import MakeUp from '../Components/Makeup/Makeup'
 const Makeup = () => {
   return (
     <div>

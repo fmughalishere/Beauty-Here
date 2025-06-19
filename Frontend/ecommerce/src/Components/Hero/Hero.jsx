@@ -1,22 +1,22 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../Context/cartContext';
+import { CartContext } from '../../Context/cartContext';
 import { FaLeaf, FaShippingFast, FaLock, FaStar, FaMagic } from 'react-icons/fa';
 import { CiInstagram, CiLinkedin, CiMail, CiTwitter } from 'react-icons/ci';
-import Img1 from '../assets/Beauty Here.png';
-import Img2 from '../assets/main.png';
-import Img3 from '../assets/skin.jpg';
-import Img4 from '../assets/makeup.jpg';
-import Img5 from '../assets/perfumes.jpg';
-import Img33 from '../assets/n1.png';
-import Img34 from '../assets/x3.jpeg';
-import Img35 from '../assets/x22.jpeg';
-import Img36 from '../assets/x21.jpeg';
-import Img37 from '../assets/n7.jfif';
-import Img38 from '../assets/n7.png';
-import user1 from '../assets/user1.jpg'
-import user2 from '../assets/user2.jpg'; 
-import user3 from '../assets/user3.jpg'; 
+import Img1 from '../../assets/Beauty Here.png';
+import Img2 from '../../assets/main.png';
+import Img3 from '../../assets/skin.jpg';
+import Img4 from '../../assets/makeup.jpg';
+import Img5 from '../../assets/perfumes.jpg';
+import Img33 from '../../assets/n1.png';
+import Img34 from '../../assets/x3.jpeg';
+import Img35 from '../../assets/x22.jpeg';
+import Img36 from '../../assets/x21.jpeg';
+import Img37 from '../../assets/n7.jfif';
+import Img38 from '../../assets/n7.png';
+import user1 from '../../assets/user1.jpg'
+import user2 from '../../assets/user2.jpg'; 
+import user3 from '../../assets/user3.jpg'; 
 
 import './Hero.css';
 const popularProducts = [
