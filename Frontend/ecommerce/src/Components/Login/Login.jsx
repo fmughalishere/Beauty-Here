@@ -6,6 +6,8 @@ import { CartContext } from '../../Context/cartContext';
 import { useNavigate } from 'react-router-dom';
 import loginBg from '../../assets/login-banner.png';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { GoogleLogin } from '@react-oauth/google';
+
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,12 +22,28 @@ const Login = () => {
   const [agreed, setAgreed] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  const handleGoogleSuccess = async (credentialResponse) => {
+    const token = credentialResponse.credential;
+    try {
+      const res = await axios.post('http://localhost:5000/api/user/google-login', { token });
+      login(res.data, res.data.token);
+      setUserEmail(res.data.email);
+      navigate('/profile');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Google login failed. Please try again.');
+    }
+  };
+
+  const handleGoogleError = () => {
+    setError('Google login was unsuccessful. Please try again.');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     if (!agreed) {
-      setError("Please agree to the terms and policy.");
+      setError("Please agree to the terms of use & privacy policy.");
       return;
     }
 
@@ -51,7 +69,7 @@ const Login = () => {
         const res = await axios.post('http://localhost:5000/api/user/register', { name, email, password });
         login(res.data, res.data.token);
         setUserEmail(res.data.email);
-        navigate('/');
+        navigate('/'); 
       } catch (err) {
         setError(err.response?.data?.message || 'Signup failed. Please try again.');
       }
@@ -86,6 +104,7 @@ const Login = () => {
               <input id="email" type="email" placeholder=" " value={email} onChange={e => setEmail(e.target.value)} required />
               <label htmlFor="email">Your Email</label>
             </div>
+            
             <div className="input-group password-group">
               <input 
                 id="password" 
@@ -105,12 +124,24 @@ const Login = () => {
 
             <div className="auth-agree">
               <input id="agree" type="checkbox" checked={agreed} onChange={() => setAgreed(!agreed)} />
-              <label htmlFor="agree">By continuing, I agree to the <a href="#">terms of use</a> & <a href="#">privacy policy</a>.</label>
+              <label htmlFor="agree">By continuing, I agree to the <a href="/terms" target="_blank">terms of use</a> & <a href="/privacy" target="_blank">privacy policy</a>.</label>
             </div>
 
             <button type="submit" className="auth-button">
               {isLogin ? 'Login' : 'Create Account'}
             </button>
+
+            <div className="divider">
+              <span>OR</span>
+            </div>
+            
+            <div className="google-login-button">
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={handleGoogleError}
+                useOneTap 
+              />
+            </div>
 
             <p className="auth-switch">
               {isLogin ? "Don't have an account? " : "Already have an account? "}

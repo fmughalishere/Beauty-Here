@@ -36,7 +36,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/makeup' element={<Makeup />} />
           <Route path='/haircare' element={<Haircare />} />
-          <Route path='/fragrance' emelent={<Fragrance />} />
+          <Route path="/fragrance" element={<Fragrance />} />
           <Route path='/ai-assistant' element={<SkincareQuiz />} />
           <Route path='/profile' element={<Profile />} /> 
                     <Route element={<AdminRoute />}>

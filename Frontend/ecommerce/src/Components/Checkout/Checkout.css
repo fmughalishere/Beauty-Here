@@ -27,6 +27,18 @@
   border-right: 1px solid var(--border-color);
 }
 
+.card-element-container {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.payment-error {
+  color: #fa755a;
+  margin-bottom: 20px;
+  text-align: center;
+}
 .logo-header h2 {
   font-family: var(--font-heading);
   font-size: 2rem;

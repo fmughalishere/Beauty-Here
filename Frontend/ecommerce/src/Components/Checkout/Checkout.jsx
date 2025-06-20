@@ -4,11 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaLock } from 'react-icons/fa';
 import axios from 'axios';
 import './Checkout.css';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 const Checkout = () => {
   const { cartItems, getTotalCartAmount, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
   const [isSummaryVisible, setIsSummaryVisible] = useState(false);
+  const [processing, setProcessing] = useState(false); 
+  const [error, setError] = useState(null);
+
+  const stripe = useStripe();
+  const elements = useElements();
 
   const [address, setAddress] = useState({
     fullName: '',
@@ -19,45 +25,81 @@ const Checkout = () => {
 
   useEffect(() => {
     if (cartItems.length === 0) {
-      navigate('/payment-success');
+      navigate('/payment-success'); 
     }
   }, [cartItems, navigate]);
 
   const handleChange = (e) => {
     setAddress({ ...address, [e.target.id]: e.target.value });
   };
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log('Placing order with data:', { items: cartItems, amount: getTotalCartAmount(), address });
+        if (!address.fullName || !address.address || !address.city || !address.postalCode) {
+        setError("Please fill in all shipping address details.");
+        return;
+    }
+
+    setProcessing(true); 
+    setError(null);
+
+    if (!stripe || !elements) {
+      setError("Stripe is not ready. Please wait a moment and try again.");
+      setProcessing(false);
+      return;
+    }
+
+    const cardElement = elements.getElement(CardElement);
 
     try {
-      const token = localStorage.getItem('auth-token');
-      if (!token) {
-        alert("Please log in to place an order.");
-        navigate('/login');
-        return;
-      }
-
-      const orderData = {
-        items: cartItems,
+      const { data: paymentIntentResponse } = await axios.post('http://localhost:5000/api/payment/create-payment-intent', {
         amount: getTotalCartAmount(),
-        address: address,
-      };
-
-      const response = await axios.post('http://localhost:5000/api/order/place', orderData, {
-        headers: { Authorization: `Bearer ${token}` },
       });
 
-      if (response.data.success) {
-        clearCart();
-        navigate('/payment-success');
-      } else {
-        alert("Error placing order: " + response.data.message);
+      if (!paymentIntentResponse.success) {
+        throw new Error("Failed to prepare payment.");
       }
-    } catch (error) {
-      console.error("Checkout failed:", error);
-      alert("An error occurred during checkout.");
+
+      const clientSecret = paymentIntentResponse.clientSecret;
+      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+          billing_details: {
+            name: address.fullName,
+          },
+        },
+      });
+
+      if (paymentResult.error) {
+        setError(paymentResult.error.message);
+        setProcessing(false);
+      } else {
+        if (paymentResult.paymentIntent.status === 'succeeded') {
+          console.log("Payment Succeeded! Placing order...");
+          
+          const token = localStorage.getItem('auth-token');
+          const orderData = {
+            items: cartItems,
+            amount: getTotalCartAmount(),
+            address: address,
+            transactionId: paymentResult.paymentIntent.id,
+          };
+
+          const response = await axios.post('http://localhost:5000/api/order/place', orderData, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+
+          if (response.data.success) {
+            clearCart();
+            navigate('/payment-success');
+          } else {
+            setError("Payment was successful, but we failed to save your order. Please contact support.");
+          }
+        }
+      }
+    } catch (err) {
+      console.error("Checkout failed:", err);
+      setError("An error occurred during checkout. Please try again.");
+      setProcessing(false);
     }
   };
 
@@ -93,36 +135,33 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
-
-            <div className="form-section">
+                        <div className="form-section">
               <h3>Payment Information</h3>
-              <p className="secure-payment-info"><FaLock /> All transactions are secure and encrypted.</p>
-              <div className="input-group full-width">
-                <input type="text" id="cardName" placeholder=" " required />
-                <label htmlFor="cardName">Name on Card</label>
-              </div>
-              <div className="input-group full-width">
-                <input type="text" id="cardNumber" placeholder=" " pattern="\d{4} \d{4} \d{4} \d{4}" required />
-                <label htmlFor="cardNumber">Card Number (XXXX XXXX XXXX XXXX)</label>
-              </div>
-              <div className="input-row">
-                <div className="input-group">
-                  <input type="text" id="expiry" placeholder=" " pattern="\d{2}/\d{2}" required />
-                  <label htmlFor="expiry">Expiry (MM/YY)</label>
-                </div>
-                <div className="input-group">
-                  <input type="text" id="cvv" placeholder=" " pattern="\d{3}" required />
-                  <label htmlFor="cvv">CVV</label>
-                </div>
+              <p className="secure-payment-info"><FaLock /> All transactions are secure and encrypted by Stripe.</p>
+              <div className="card-element-container">
+                <CardElement options={{
+                    style: {
+                        base: {
+                            fontSize: '16px',
+                            color: '#424770',
+                            '::placeholder': {
+                                color: '#aab7c4',
+                            },
+                        },
+                        invalid: {
+                            color: '#9e2146',
+                        },
+                    },
+                }} />
               </div>
             </div>
+            {error && <div className="payment-error">{error}</div>}
 
-            <button type="submit" className="place-order-btn">
-              Pay ${totalAmount.toFixed(2)} and Place Order
+            <button type="submit" className="place-order-btn" disabled={processing || !stripe}>
+              {processing ? 'Processing...' : `Pay $${totalAmount.toFixed(2)} and Place Order`}
             </button>
           </form>
         </div>
-
         <div className="order-summary-section">
           <div className="mobile-summary-header" onClick={() => setIsSummaryVisible(!isSummaryVisible)}>
             <div>
@@ -131,7 +170,6 @@ const Checkout = () => {
             </div>
             <span>${totalAmount.toFixed(2)}</span>
           </div>
-
           <div className={`summary-content ${isSummaryVisible ? 'visible' : ''}`}>
             {cartItems.map((item) => (
               <div key={item.id} className="summary-item">

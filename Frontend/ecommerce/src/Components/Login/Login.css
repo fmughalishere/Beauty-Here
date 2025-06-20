@@ -191,6 +191,31 @@
   font-weight: 600;
   cursor: pointer;
 }
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #888;
+  margin: 20px 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+.divider:not(:empty)::before {
+  margin-right: .25em;
+}
+.divider:not(:empty)::after {
+  margin-left: .25em;
+}
+.google-login-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
 
 @media screen and (max-width: 768px) {
