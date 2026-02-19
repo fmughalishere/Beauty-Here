@@ -18,7 +18,7 @@ const featuredProducts = [
   { id: 105, name: 'Exfoliating Scrub', price: 19, imageSrc: product4 },
 ];
 
-const Skincare = () => {
+const SkinCare = () => {
   const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = (product) => {
@@ -112,4 +112,4 @@ const Skincare = () => {
   );
 };
 
-export default Skincare;
+export default SkinCare;
