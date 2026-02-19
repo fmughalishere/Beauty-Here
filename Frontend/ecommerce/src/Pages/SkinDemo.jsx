@@ -1,9 +1,9 @@
 import React from 'react';
-import Skincare from '../Components/Skincare/Skincare';
+import SkinCare from '../Components/SkinCare/SkinCare';
 const SkinDemo = () => {
   return (
     <div>
-        <Skincare/>
+        <SkinCare/>
     </div>
   );
 };
