@@ -1,5 +1,5 @@
 import React from 'react';
-import SkinCare from '../Components/SkinCare/SkinCare';
+import SkinCare from '../Components/Skincare/SkinCare';
 const SkinDemo = () => {
   return (
     <div>
