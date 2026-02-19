@@ -1,8 +1,8 @@
-import Haircare from "../Components/Haircare/HairCare"
+import HairCare from "../Components/Haircare/HairCare"
 const HairCare = () => {
   return (
     <div>
-        <Haircare/>
+        <HairCare/>
         </div>
   )
 }
