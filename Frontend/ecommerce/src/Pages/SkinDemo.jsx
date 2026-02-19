@@ -1,6 +1,6 @@
 import React from 'react';
 import Skincare from '../Components/Skincare/Skincare';
-const SkinDermo = () => {
+const SkinDemo = () => {
   return (
     <div>
         <Skincare/>
@@ -8,4 +8,4 @@ const SkinDermo = () => {
   );
 };
 
-export default SkinDermo;
+export default SkinDemo;
