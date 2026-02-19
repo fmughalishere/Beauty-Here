@@ -21,7 +21,7 @@ const allHaircareProducts = [
   { id: 37, name: 'Almond & Amla Hair Oil', category: 'Oil', price: 20, imageSrc: haircare8 },
 ];
 
-const Haircare = () => {
+const HairCare = () => {
   const { addToCart } = useContext(CartContext);
   const [products, setProducts] = useState(allHaircareProducts);
   const [activeFilter, setActiveFilter] = useState('All');
@@ -109,4 +109,4 @@ const Haircare = () => {
   );
 };
 
-export default Haircare;
+export default HairCare;
