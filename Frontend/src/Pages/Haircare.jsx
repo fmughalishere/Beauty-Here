@@ -1,10 +1,11 @@
-import HairCare from "../Components/Haircare/HairCare"
-const HairCare = () => {
+import HairCareComponent from "../Components/Haircare/HairCare"
+
+const Haircare = () => {
   return (
     <div>
-        <HairCare/>
+        <HairCareComponent/>
         </div>
   )
 }
 
-export default HairCare
+export default Haircare
