@@ -133,6 +133,43 @@
     color: var(--text-light);
 }
 
+.trust-badges {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.trust-badge:hover {
+  transform: translateY(-3px);
+  border-color: var(--brand-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.trust-badge-icon {
+  display: inline-flex;
+  color: var(--brand-primary);
+  font-size: 1rem;
+}
+
 .featured-categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -475,6 +512,25 @@
     border-radius: 0 50px 50px 0;
     border: none;
     cursor: pointer;
+}
+
+.newsletter-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.newsletter-feedback {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.newsletter-feedback.success {
+    color: #6ee7a0;
+}
+
+.newsletter-feedback.error {
+    color: #ff8fa8;
 }
 
 @media (max-width: 1024px) {

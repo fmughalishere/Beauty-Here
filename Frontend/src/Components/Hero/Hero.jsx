@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import { CartContext } from '../../Context/cartContext';
-import { FaLeaf, FaShippingFast, FaLock, FaStar, FaMagic } from 'react-icons/fa';
+import { API_BASE_URL } from '../../api/config';
+import { FaLeaf, FaShippingFast, FaLock, FaStar, FaMagic, FaPaw, FaFlask, FaRecycle, FaCertificate } from 'react-icons/fa';
 import Img2 from '../../assets/main.png';
 import Img3 from '../../assets/skin.jpg';
 import Img4 from '../../assets/makeup.jpg';
@@ -53,12 +55,39 @@ const itemVariants = {
 };
 
 
+const trustBadges = [
+  { icon: <FaPaw />, label: 'Cruelty Free' },
+  { icon: <FaFlask />, label: 'Paraben & Sulphate Free' },
+  { icon: <FaCertificate />, label: 'Non Toxic' },
+  { icon: <FaLeaf />, label: '100% Vegan' },
+  { icon: <FaRecycle />, label: 'Sustainably Sourced' },
+];
+
 const Hero = () => {
   const { addToCart } = useContext(CartContext);
+
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState({ state: 'idle', message: '' });
 
   const handleAddToCart = (product) => {
     addToCart(product);
     alert(`${product.name} has been added to the cart!`);
+  };
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    setNewsletterStatus({ state: 'loading', message: '' });
+    try {
+      const res = await axios.post(`${API_BASE_URL}/api/newsletter/subscribe`, { email: newsletterEmail });
+      setNewsletterStatus({ state: 'success', message: res.data.message || "You're subscribed!" });
+      setNewsletterEmail('');
+    } catch (err) {
+      setNewsletterStatus({
+        state: 'error',
+        message: err.response?.data?.message || 'Something went wrong. Please try again later.',
+      });
+    }
   };
 
   return (
@@ -119,7 +148,22 @@ const Hero = () => {
         </motion.div>
       </motion.section>
 
-      <motion.section 
+      <motion.section
+        className="trust-badges"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        {trustBadges.map((badge) => (
+          <motion.div className="trust-badge" key={badge.label} variants={itemVariants}>
+            <span className="trust-badge-icon">{badge.icon}</span>
+            <span className="trust-badge-label">{badge.label}</span>
+          </motion.div>
+        ))}
+      </motion.section>
+
+      <motion.section
         className="featured-categories"
         initial="hidden"
         whileInView="visible"
@@ -240,10 +284,21 @@ const Hero = () => {
       >
           <h2>Join Our Beauty Club</h2>
           <p>Subscribe to our newsletter to get the latest updates, new arrivals, and exclusive offers.</p>
-          <form className="newsletter-form">
-              <input type="email" placeholder="Enter your email address" required />
-              <button type="submit" className="btn-primary">Subscribe</button>
+          <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                required
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+              />
+              <button type="submit" className="btn-primary" disabled={newsletterStatus.state === 'loading'}>
+                {newsletterStatus.state === 'loading' ? 'Subscribing...' : 'Subscribe'}
+              </button>
           </form>
+          {newsletterStatus.message && (
+            <p className={`newsletter-feedback ${newsletterStatus.state}`}>{newsletterStatus.message}</p>
+          )}
       </motion.section>
       <Footer />
     </>
