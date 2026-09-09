@@ -1,8 +1,8 @@
 footer {
   padding-top: 50px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #eee;
-  margin-top: 4rem; 
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
 }
 
 .footer-container {
@@ -38,16 +38,17 @@ footer {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: #eee;
+  background-color: var(--bg-main);
   font-size: 1.2rem;
-  transition: all 0.3s ease;
-  color: var(--text-dark); 
+  transition: all 0.3s var(--ease);
+  color: var(--text-dark);
 }
 
 .footer-social a:hover {
-  background-color: var(--primary-color);
+  background: var(--brand-gradient);
   color: var(--white);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-brand);
 }
 
 .footer-link-box strong {
@@ -86,7 +87,7 @@ footer {
 }
 
 .footer-bottom {
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-color);
   margin-top: 40px;
   padding: 20px 0;
   max-width: 1200px;
