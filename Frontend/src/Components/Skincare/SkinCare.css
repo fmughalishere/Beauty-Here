@@ -1,0 +1,297 @@
+/* Design tokens live in src/index.css - this file only has Skincare-page-specific styles. */
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.1) translate(-2%, 2%);
+  }
+  100% {
+    transform: scale(1.1) translate(2%, -2%);
+  }
+}
+
+.skincare-page {
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  margin-bottom: 3rem;
+}
+
+.skincare-header {
+  height: 50vh;
+  min-height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden; 
+}
+
+.skincare-header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: kenburns 25s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.skincare-header .header-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2.5rem;
+  border-radius: 10px;
+  max-width: 90%;
+  z-index: 1; 
+}
+
+.skincare-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.skincare-header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+#shop-by-type {
+  padding: 4rem 0;
+}
+
+.skin-type-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.skin-type-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  color: var(--white);
+  height: 400px;
+  transition: transform 0.3s ease; 
+}
+
+.skin-type-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.skin-type-card:hover img {
+  transform: scale(1.1);
+}
+
+.type-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  z-index: 2;
+}
+
+.type-card-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.type-card-content .btn-secondary {
+  display: inline-block;
+  background: var(--white);
+  color: var(--text-dark);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-top: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.type-card-content .btn-secondary:hover {
+  background: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+#featured-skincare {
+  padding: 4rem 0;
+  background-color: var(--bg-light);
+}
+
+.featured-products-grid {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skincare-product-card {
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  position: relative; 
+}
+
+.skincare-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.skincare-product-card .card-img-container {
+  height: 250px;
+  padding: 1rem;
+}
+.skincare-product-card .card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+.skincare-product-card:hover .card-img-container img {
+    transform: scale(1.05);
+}
+.skincare-product-card .card-text-content {
+  padding: 1rem 1rem 3rem 1rem; 
+  flex-grow: 1;
+}
+.skincare-product-card .p-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.skincare-product-card .p-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.skincare-product-card .add-to-cart-btn {
+  position: absolute; 
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--text-dark);
+  color: var(--white);
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transform: translateY(100%); 
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.skincare-product-card:hover .add-to-cart-btn {
+  transform: translateY(0); 
+}
+
+.skincare-product-card .add-to-cart-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.view-all-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.view-all-container .btn-primary {
+    text-decoration: none;
+    padding: 12px 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.view-all-container .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(236, 38, 177, 0.3);
+}
+
+#routine-guide {
+  padding: 4rem 0;
+}
+
+.routine-steps-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    text-align: center;
+}
+
+.routine-step {
+    padding: 2rem;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin: 0 auto 1.5rem auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.routine-step:hover .step-number {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 0 8px 20px rgba(236, 38, 177, 0.25);
+}
+
+.routine-step h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.routine-step p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 960px) {
+  .skin-type-container, .routine-steps-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skincare-header h1 {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+}

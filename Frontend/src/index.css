@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap');
+
+/* =========================================================================
+   BeautyHere design tokens
+   Single source of truth for color, type and spacing across every page.
+   (Previously every component .css file redefined its own copy of these
+   same values - they're consolidated here now so there is one place to
+   change the brand palette, and the files stay in sync automatically.)
+   ========================================================================= */
+:root {
+  /* Brand palette */
+  --brand-primary: #ec26b1;
+  --brand-primary-dark: #c81e94;
+  --brand-secondary: #fed2d1;
+  --success-color: #28a745;
+
+  /* Surfaces */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fdf6fa;
+  --bg-main: #f4f7fa;
+  --panel-bg: #ffffff;
+
+  /* Text */
+  --text-primary: #333333;
+  --text-secondary: #5a5a5a;
+  --text-on-brand: #ffffff;
+
+  --border-color: #e5e7eb;
+
+  /* Typography */
+  --font-body: 'Poppins', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+
+  /* Shape */
+  --radius-sm: 8px;
+  --radius-md: 15px;
+  --radius-pill: 50px;
+
+  /* --- Legacy aliases ---
+     A lot of component CSS still refers to these older token names.
+     Keeping them mapped to the tokens above (instead of copy-pasting the
+     same hex values into every file) means every page shares one palette. */
+  --primary-color: var(--brand-primary);
+  --secondary-color: var(--brand-secondary);
+  --text-dark: var(--text-primary);
+  --text-light: var(--text-secondary);
+  --white: #ffffff;
+  --black: #000000;
+  --bg-light: var(--bg-secondary);
+
+  --admin-bg: #f8f9fa;
+  --admin-sidebar-bg: #ffffff;
+  --admin-card-bg: #ffffff;
+  --admin-primary-color: var(--brand-primary);
+  --admin-border-color: #dee2e6;
+  --admin-text-dark: var(--text-primary);
+  --admin-text-light: var(--text-secondary);
+}
+
+body.dark {
+  --brand-primary: #ec26b1;
+  --brand-secondary: #fed2d1;
+
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-main: #1a1a1a;
+  --panel-bg: #242424;
+
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-on-brand: #ffffff;
+
+  --border-color: #333333;
+}
+
+/* Global reset (previously duplicated in Login.css and Hero.css) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--brand-primary);
+  color: var(--white);
+  padding: 12px 30px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-primary-dark);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(236, 38, 177, 0.3);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: var(--white);
+  color: var(--text-dark);
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background: var(--text-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+body, .btn-primary, .btn-secondary, .product-card, .service-card, .profile-card, .navbar, .auth-container {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

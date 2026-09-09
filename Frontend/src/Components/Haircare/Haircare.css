@@ -1,0 +1,239 @@
+/* Design tokens live in src/index.css - this file only has Haircare-page-specific styles. */
+
+@keyframes kenburns {
+  0% { transform: scale(1.1) translate(-2%, 2%); }
+  100% { transform: scale(1.1) translate(2%, -2%); }
+}
+
+.haircare-page {
+  width: 100%;
+}
+
+.haircare-header {
+  height: 40vh;
+  min-height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden; 
+}
+
+.haircare-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/haircare-banner.webp') no-repeat center center/cover;
+  animation: kenburns 25s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.haircare-header .header-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.haircare-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.haircare-header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+.controls-section {
+  padding: 2rem 0;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 80px;
+  z-index: 900;
+}
+
+.filter-controls {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button {
+  font-family: var(--font-body);
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  background: var(--white);
+  color: var(--text-light);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--text-dark);
+}
+
+.filter-buttons button.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white);
+}
+
+.sort-dropdown select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.haircare-grid-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 3rem auto;
+}
+
+.haircare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+.haircare-product-card {
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+  position: relative; 
+}
+
+.haircare-product-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.haircare-product-card .card-img-container {
+  height: 280px;
+  background-color: #fafafa;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.haircare-product-card .card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.haircare-product-card:hover .card-img-container img {
+  transform: scale(1.05);
+}
+
+.haircare-product-card .card-text-content {
+  padding: 1.2rem 1.2rem 2.5rem 1.2rem; 
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.haircare-product-card .p-category {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.haircare-product-card .p-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+}
+
+.haircare-product-card .p-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: auto;
+}
+
+.haircare-product-card .add-to-cart-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--text-dark);
+  color: var(--white);
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.haircare-product-card:hover .add-to-cart-btn {
+  transform: translateY(0);
+}
+
+.haircare-product-card .add-to-cart-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.no-products-found {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  grid-column: 1 / -1; 
+}
+
+@media screen and (max-width: 768px) {
+  .haircare-header h1 {
+    font-size: 2.5rem;
+  }
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .haircare-header h1 {
+    font-size: 2rem;
+  }
+  .haircare-header p {
+    font-size: 1rem;
+  }
+}

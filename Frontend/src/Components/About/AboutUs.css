@@ -1,0 +1,241 @@
+/* Design tokens live in src/index.css - this file only has About-page-specific styles. */
+
+@keyframes kenburns-about {
+  0% { transform: scale(1.1) translate(2%, -2%); }
+  100% { transform: scale(1.1) translate(-2%, 2%); }
+}
+
+.about-us-page {
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  margin-bottom: 3rem;
+}
+
+.about-header {
+  height: 50vh;
+  min-height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  background-size: cover;
+  background-position: center 50%;
+  position: relative;
+  overflow: hidden; 
+}
+
+.about-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  animation: kenburns-about 25s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.about-header .header-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2.5rem;
+  border-radius: 10px;
+  max-width: 90%;
+  position: relative;
+  z-index: 2;
+}
+
+.about-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+#our-mission {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.mission-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.mission-statement {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    font-style: italic;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 2rem;
+    text-align: left;
+}
+
+#meet-founder {
+    padding: 4rem 0;
+    background-color: var(--bg-light);
+}
+.founder-container {
+    max-width: 1100px;
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 3rem;
+}
+.founder-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease;
+}
+
+.founder-image:hover img {
+    transform: scale(1.03);
+}
+
+.founder-text h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.founder-text h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+.founder-text p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+#our-values {
+  padding: 4rem 0;
+}
+.values-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.value-card {
+  padding: 2rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.value-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  transition: transform 0.4s ease;
+}
+.value-card:hover .value-icon {
+    transform: scale(1.1) rotate(-10deg);
+}
+.value-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+.value-card p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+#contact-info {
+    padding: 4rem 0;
+    background-color: var(--bg-light);
+}
+.contact-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+.contact-item {
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background-color: var(--white);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.4s ease;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.1);
+}
+
+.contact-item h4 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.contact-item p, .contact-item a {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.contact-item a:hover {
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 960px) {
+  .founder-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .founder-image {
+    margin: 0 auto 2rem auto;
+  }
+  .values-container, .contact-container {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-header h1 {
+    font-size: 2.5rem;
+  }
+  .section-title, .founder-text h2 {
+    font-size: 2.2rem;
+  }
+}

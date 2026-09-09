@@ -1,0 +1,253 @@
+/* Design tokens live in src/index.css - this file only has Services-page-specific styles. */
+
+
+@keyframes kenburns {
+  0% { transform: scale(1.1) translate(-2%, 2%); }
+  100% { transform: scale(1.1) translate(2%, -2%); }
+}
+
+.services-page {
+  width: 100%;
+  background-color: var(--white);
+}
+
+.services-header {
+  height: 45vh;
+  min-height: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  background: url('../../assets/services-banner.png') no-repeat center center/cover;
+  position: relative;
+  overflow: hidden; 
+}
+
+.services-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit; 
+  background-size: cover;
+  animation: kenburns 25s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.services-header .header-overlay {
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 2.5rem;
+  border-radius: 10px;
+  max-width: 90%;
+  position: relative; 
+  z-index: 2;
+}
+
+.services-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.services-header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+#why-choose-us {
+    padding: 4rem 0;
+    background-color: var(--bg-light);
+}
+
+.why-choose-us-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+
+.feature-box {
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    background-color: var(--white);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.4s ease;
+}
+
+.feature-box:hover .feature-icon {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+.feature-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.feature-box p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+
+#our-services {
+  padding: 4rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  margin-bottom: 3rem;
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.service-img-container {
+  height: 250px;
+  width: 100%;
+  overflow: hidden; 
+}
+
+.service-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease; 
+}
+
+.service-card:hover .service-img-container img {
+    transform: scale(1.05);
+}
+
+.service-card-content {
+  padding: 1.5rem;
+  text-align: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+}
+
+.service-card-content p {
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-card-content .btn-primary {
+  margin-top: auto; 
+  align-self: flex-start; 
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.service-card-content .btn-primary:hover {
+  background-color: #c81e94;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(236, 38, 177, 0.3);
+}
+
+#booking-cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--bg-light);
+}
+
+#booking-cta h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#booking-cta p {
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+#booking-cta .btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#booking-cta .btn-primary:hover {
+    background-color: #c81e94;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(236, 38, 177, 0.3);
+}
+
+@media screen and (max-width: 960px) {
+  .why-choose-us-container {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .services-header h1 {
+    font-size: 2.5rem;
+  }
+  .section-title, #booking-cta h2 {
+    font-size: 2.2rem;
+  }
+}

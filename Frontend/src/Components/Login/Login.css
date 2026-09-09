@@ -1,0 +1,244 @@
+/* Design tokens live in src/index.css - this file only has Login-page-specific styles. */
+
+.auth-page {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  padding: 2rem;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 900px;
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.auth-panel {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  color: var(--white);
+  transition: transform 0.4s ease-out;
+}
+.auth-panel:hover {
+    transform: scale(1.02);
+}
+
+.panel-overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.panel-overlay h2 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.panel-overlay p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.auth-form-container {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; 
+}
+
+.auth-form h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+
+.password-group {
+  position: relative; 
+}
+
+.password-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--text-light, #5a5a5a);
+  z-index: 3; 
+}
+
+.password-group input {
+  padding-right: 40px; 
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  font-size: 1rem;
+  color: var(--text-dark);
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
+.input-group label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -14px;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.input-group input:focus {
+  border-bottom-color: var(--primary-color);
+}
+
+.auth-error {
+  color: #d9534f;
+  background: #f2dede;
+  border: 1px solid #ebccd1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.auth-agree {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.auth-agree label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.auth-agree a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #c81e94;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(236, 38, 177, 0.3);
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-light);
+}
+
+.auth-switch span {
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #888;
+  margin: 20px 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+.divider:not(:empty)::before {
+  margin-right: .25em;
+}
+.divider:not(:empty)::after {
+  margin-left: .25em;
+}
+.google-login-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-panel {
+    display: none; 
+  }
+
+  .auth-form-container {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+    .auth-page {
+        padding: 1rem;
+    }
+    .auth-form-container {
+        padding: 1.5rem;
+    }
+    .auth-form h1 {
+        font-size: 2rem;
+    }
+}
