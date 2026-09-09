@@ -131,7 +131,7 @@ const Hero = () => {
           <div className="product-grid-text">
             <strong>Complete Skincare</strong>
             <span>For a Flawless Skin</span>
-            <a href="/skincare" className="btn-secondary">Explore</a>
+            <Link to="/product?category=Skincare" className="btn-secondary">Explore</Link>
           </div>
         </motion.div>
         <motion.div className="product-grid-box product-grid-box2" variants={itemVariants}>
@@ -139,7 +139,7 @@ const Hero = () => {
           <div className="product-grid-text">
             <strong>Makeup Essentials</strong>
             <span>Colors that Define You</span>
-            <a href="/services" className="btn-secondary">Discover</a>
+            <Link to="/product?category=Makeup" className="btn-secondary">Discover</Link>
           </div>
         </motion.div>
         <motion.div className="product-grid-box product-grid-box3" variants={itemVariants}>
@@ -147,7 +147,7 @@ const Hero = () => {
           <div className="product-grid-text">
             <strong>Luxury Perfumes</strong>
             <span>Scents of Elegance</span>
-            <a href="/product" className="btn-secondary">Shop Now</a>
+            <Link to="/product?category=Fragrance" className="btn-secondary">Shop Now</Link>
           </div>
         </motion.div>
       </motion.section>
@@ -161,7 +161,7 @@ const Hero = () => {
       >
         <div className="popular-heading">
           <h3>Our Popular Products</h3>
-          <a href="/product">View All</a>
+          <Link to="/product">View All</Link>
         </div>
         <motion.div 
           className="popular-container"
@@ -175,11 +175,11 @@ const Hero = () => {
               whileHover={{ y: -10, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
               transition={{ duration: 0.3 }}
             >
-              <a href="/product" className="popular-box-img">
+              <Link to="/product" className="popular-box-img">
                 <img src={product.imageSrc} alt={product.name} />
-              </a>
+              </Link>
               <div className="popular-box-text">
-                <a href="/product">{product.name}</a>
+                <Link to="/product">{product.name}</Link>
                 <span className="p-category">{product.category}</span>
                 <span className="p-price">${product.price} <del>${product.oldPrice}</del></span>
               </div>
@@ -198,7 +198,7 @@ const Hero = () => {
       >
           <h2>Get 25% Off On Your First Order!</h2>
           <p>Use code <span className="promo-code">BEAUTY25</span> at checkout to unlock your special discount.</p>
-          <a href="/product" className="btn-primary">Shop The Collection</a>
+          <Link to="/product" className="btn-primary">Shop The Collection</Link>
       </motion.section>
 
       <motion.section 

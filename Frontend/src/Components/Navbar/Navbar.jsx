@@ -93,19 +93,24 @@ const Navbar = () => {
               animate="open"
               exit="closed"
             >
-              {['Home', 'Skincare', 'All Products', 'Services', 'Makeup', 'Haircare', 'Fragrance', 'About'].map((item) => {
-                const path = `/${item.toLowerCase().replace(' ', '-')}`;
-                const finalPath = item === 'Home' ? '/' : (item === 'All Products' ? '/product' : path);
-                return (
+              {[
+                { label: 'Home', path: '/' },
+                { label: 'All Products', path: '/product' },
+                { label: 'Skincare', path: '/product?category=Skincare' },
+                { label: 'Makeup', path: '/product?category=Makeup' },
+                { label: 'Haircare', path: '/product?category=Haircare' },
+                { label: 'Fragrance', path: '/product?category=Fragrance' },
+                { label: 'Services', path: '/services' },
+                { label: 'About', path: '/about' },
+              ].map(({ label, path }) => (
                   <motion.li
-                    key={item}
-                    className={isActive(finalPath) ? 'nav-item active' : 'nav-item'}
+                    key={label}
+                    className={isActive(path.split('?')[0]) ? 'nav-item active' : 'nav-item'}
                     variants={mobileMenuItemVariants}
                   >
-                    <Link to={finalPath} onClick={handleLinkClick}>{item}</Link>
+                    <Link to={path} onClick={handleLinkClick}>{label}</Link>
                   </motion.li>
-                );
-              })}
+              ))}
             </motion.ul>
           )}
         </AnimatePresence>
@@ -114,23 +119,21 @@ const Navbar = () => {
           <li className={isActive('/') ? 'nav-item active' : 'nav-item'}>
             <Link to="/">Home</Link>
           </li>
-          <li className={isActive('/skincare') ? 'nav-item active' : 'nav-item'}>
-            <Link to="/skincare">Skincare</Link>
-          </li>
           <li className={isActive('/product') ? 'nav-item active' : 'nav-item'}>
             <Link to="/product">All Products</Link>
           </li>
+          <li className="nav-item nav-item-dropdown">
+            <span>Shop by Category</span>
+            <div className="nav-dropdown-menu">
+              <Link to="/product?category=Skincare">Skincare</Link>
+              <Link to="/product?category=Makeup">Makeup</Link>
+              <Link to="/product?category=Haircare">Haircare</Link>
+              <Link to="/product?category=Fragrance">Fragrance</Link>
+              <Link to="/product?category=Nails">Nails</Link>
+            </div>
+          </li>
           <li className={isActive('/services') ? 'nav-item active' : 'nav-item'}>
             <Link to="/services">Services</Link>
-          </li>
-           <li className={isActive('/makeup') ? 'nav-item active' : 'nav-item'}>
-            <Link to="/makeup" >Makeup</Link>
-          </li>
-           <li className={isActive('/haircare') ? 'nav-item active' : 'nav-item'}>
-            <Link to="/haircare" >Haircare</Link>
-          </li>
-          <li className={isActive('/fragrance') ? 'nav-item active' : 'nav-item'}>
-            <Link to="/fragrance">Fragrance</Link>
           </li>
            <li className={isActive('/about') ? 'nav-item active' : 'nav-item'}>
             <Link to="/about" >About</Link>

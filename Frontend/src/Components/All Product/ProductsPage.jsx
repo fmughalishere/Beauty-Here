@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { CartContext } from '../../Context/cartContext';
 import './ProductsPage.css';
 import axios from 'axios';
@@ -87,14 +88,33 @@ const headerTextItem = {
 
 const ProductsPage = () => {
   const { addToCart } = useContext(CartContext);
-  
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [allProducts, setAllProducts] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || 'All');
   const [sortType, setSortType] = useState('default');
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
-  
+
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get('category');
+    if (categoryFromUrl && categoryFromUrl !== activeCategory) {
+      setActiveCategory(categoryFromUrl);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+    if (category === 'All') {
+      searchParams.delete('category');
+      setSearchParams(searchParams);
+    } else {
+      setSearchParams({ category });
+    }
+  };
+
   useEffect(() => {
     const fetchAndCombineProducts = async () => {
       try {
@@ -189,7 +209,7 @@ const ProductsPage = () => {
                 <button
                   key={category}
                   className={activeCategory === category ? 'active' : ''}
-                  onClick={() => setActiveCategory(category)}
+                  onClick={() => handleCategoryClick(category)}
                 >
                   {category}
                 </button>
